@@ -5,7 +5,7 @@ const MariaChatBotComponent = () => {
   useEffect(() => {
     // Create a script element and append it to the body
     const script = document.createElement('script');
-    script.src = 'https://<companyName>-chatbot.redacta.me/embedMaria.js?id=dK7xP9fQ3mR2nL8yT4wZ6bH1vC5jS0gA';
+    script.src = 'https://<companyName>-chatbot.redacta.me/embedMaria.js?id=<companyKey>';
     script.type = 'module';
     document.body.appendChild(script);
 
