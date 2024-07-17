@@ -1,18 +1,23 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Maria ChatBot</title>
-  <link rel="stylesheet" href="https://<companyName>-chatbot.redacta.me/style.css">
-  <script type="module" src="https://<companyName>-chatbot.redacta.me/embedMaria.js?id=<companyKey>"></script>
-  <!-- AUTOLOGIN AL CHAT -->
+  <link rel="stylesheet" href="https://<companyName>-chatbot.redacta.me/embedMaria.css">
+  <script type="module" src="https://<companyName>-chatbot.redacta.me/embedMaria.js"></script>
+  <!-- OPCIÓN DE INICIO DEL CHAT ( SE RECOMIENDA QUE SEA EN EL BODY )  -->
   <script>
-    setTimeout(() => {
-      window.mariaWebChat.login({email : 'demo@redacta.me' , password: 'demopass'});
-    }, 2000);
-  </script> 
+    document.addEventListener("DOMContentLoaded", function () {
+      window.marichat.init('https://<companyName>-chatbot.redacta.me', '<companyKey>'); // URL del servidor chat y service_key
+      // AUTOLOGIN AL CHAT
+      // setTimeout(() => {
+      //     window.marichat.autologin({email: '' , password: ''}); // Email y password del usuario autologin
+      // }, 400);
+    });
+  </script>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -74,6 +79,17 @@
 </head>
 
 <body>
+  <!-- 
+
+  <script>
+       window.marichat.init('http://localhost',''); // URL del servidor chat y service_key
+        // AUTOLOGIN AL CHAT
+        setTimeout(() => {
+            window.marichat.autologin({email: '' , password: ''}); // Email y password del usuario autologin
+        }, 400);
+  </script> 
+
+  -->
   <div class="container">
     <div class="logo">
       <h1>Mi Buscador</h1>
@@ -81,10 +97,10 @@
     <form class="search-form" action="https://www.google.com/search" method="GET">
       <input type="text" name="q" class="search-input" placeholder="Buscar...">
       <button type="submit" class="search-button">Buscar</button>
-    </form> 
+    </form>
 
   </div>
- 
+
 </body>
 
 </html>
