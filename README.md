@@ -10,81 +10,29 @@ Para integrar MariaChatBot en tu página HTML ([ejemplo](/examples/HTML/index.ht
 1. Agrega los siguientes enlaces en la sección `<head>` de tu HTML:
 
 ```html
-<link rel="stylesheet" href="https://<companyName>-chatbot.redacta.me/style.css">
-<script type="module" src="https://<companyName>-chatbot.redacta.me/embedMaria.js?id=<companyKey>"></script>
+  <link rel="stylesheet" href="https://<companyName>-chatbot.redacta.me/embedMaria.css">
+  <script src="https://<companyName>-chatbot.redacta.me/embedMaria.js"></script>
 ```
 
-2. (Opcional) Agrega funcionalidad de auto-login:
+2. Agrega funcionalidad de autenticación mediante `companyKey`:
+
+Opcionalmente es posible añadir un auto-login.
 
 ```html
-<script>
-  setTimeout(() => {
-    window.mariaWebChat.login({email : 'demo@redacta.me' , password: 'demopass'});
-  }, 2000);
-</script>
+  <!-- OPCIÓN DE INICIO DEL CHAT ( SE RECOMIENDA QUE SEA EN EL BODY )  -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      window.marichat.init('https://<companyName>-chatbot.redacta.me', '<companyKey>'); // URL del servidor chat y service_key
+      // AUTOLOGIN AL CHAT
+      // setTimeout(() => {
+      //     window.marichat.autologin({email: '' , password: ''}); // Email y password del usuario autologin
+      // }, 400);
+    });
+  </script>
 ```
 
-3. Agrega un contenedor para el widget de chat:
+NOTA: El script de autenticación mediante `companyKey` y auto-login pueden incluirse tanto en el `header` como en el `body` de la página HTML como se muestra en el [ejemplo](/examples/HTML/index.html). 
 
-```html
-<div id="mariachat-container"></div>
-```
-
-4. Estiliza el contenedor según sea necesario:
-
-```html
-<style>
-  #mariachat-container {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1000;
-  }
-</style>
-```
-
-## Integración en React
-
-Para integrar MariaChatBot en un componente React ([ejemplo](/examples/React/MariChatBotComponent.jsx)), crea un nuevo componente así:
-
-```jsx
-import React, { useEffect } from 'react';
-import { Helmet } from 'react-helmet';
-
-const MariaChatBotComponent = () => {
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://<companyName>-chatbot.redacta.me/embedMaria.js?id=<companyKey>';
-    script.type = 'module';
-    document.body.appendChild(script);
-
-    const autoLoginScript = document.createElement('script');
-    autoLoginScript.innerHTML = `
-      setTimeout(() => {
-        window.mariaWebChat.login({ email: 'demo@redacta.me', password: 'demopass' });
-      }, 2000);
-    `;
-    document.body.appendChild(autoLoginScript);
-
-    return () => {
-      document.body.removeChild(script);
-      document.body.removeChild(autoLoginScript);
-    };
-  }, []);
-
-  return (
-    <div>
-      <Helmet>
-        <link rel="stylesheet" href="https://<companyName>-chatbot.redacta.me/style.css" />
-      </Helmet>
-    </div>
-  );
-};
-
-export default MariaChatBotComponent;
-```
 
 ## Nota Importante
 
@@ -94,9 +42,3 @@ Redacta.me te proporcionará los siguientes datos:
 - Credenciales de usuario (email y contraseña)
 
 Reemplaza estos marcadores de posición con los valores reales proporcionados por Redacta.me para acceder al servicio.
-
-
-
-
-## TODO
-- Pendiente ejemplos de integración mediante `iFrame`.
