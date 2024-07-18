@@ -11,7 +11,7 @@ Para integrar MariaChatBot en tu página HTML ([ejemplo](/examples/HTML/index.ht
 
 ```html
   <link rel="stylesheet" href="https://<companyName>-chatbot.redacta.me/embedMaria.css">
-  <script type="module" src="https://<companyName>-chatbot.redacta.me/embedMaria.js"></script>
+  <script src="https://<companyName>-chatbot.redacta.me/embedMaria.js"></script>
 ```
 
 2. Agrega funcionalidad de autenticación mediante `companyKey`:
@@ -33,26 +33,6 @@ Opcionalmente es posible añadir un auto-login.
 
 NOTA: El script de autenticación mediante `companyKey` y auto-login pueden incluirse tanto en el `header` como en el `body` de la página HTML como se muestra en el [ejemplo](/examples/HTML/index.html). 
 
-3. Agrega un contenedor para el widget de chat:
-
-```html
-<div id="mariachat-container"></div>
-```
-
-4. Estiliza el contenedor según sea necesario:
-
-```html
-<style>
-  #mariachat-container {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1000;
-  }
-</style>
-```
 
 ## Nota Importante
 
